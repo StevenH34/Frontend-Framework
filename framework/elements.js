@@ -9,15 +9,11 @@ const createElement = tagName => (strings, ...args) => ({
     ),
 });
 
-const div = createElement("div");
-const p = createElement("p");
-
-const firstName = "Bob";
-const lastName = "Dole";
+export const div = createElement("div");
+export const p = createElement("p");
+// TODO: add more elements
 
 // const template  = div`Hello, ${firstName} ${lastName}!`;
 // div is a tag which allows us to make computations on the following template literal
 // Available by default in ES6 
-
-const { template } = p`Hello, ${firstName} ${lastName}!`
-console.log(template);
+// const { template } = p`Hello, ${firstName} ${lastName}!`
