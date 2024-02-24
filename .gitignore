@@ -1,0 +1,14 @@
+# Dependency directories
+node_modules/
+
+# Cache
+.parcel-cache
+
+# VisualStudioCode
+.vscode/*
+
+# Files
+package-lock.json
+
+# Folders
+dist
