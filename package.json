@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
-    "parcel": "latest"
+    "parcel": "latest",
+    "snabbdom": "^3.6.2"
   }
 }
