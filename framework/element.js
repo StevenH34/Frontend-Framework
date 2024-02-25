@@ -21,11 +21,11 @@ const createReducer = args => (acc, currentString, index) => {
 };
 
 const createElement = tagName => (strings, ...args) => { 
-    const { template, on } = strings.reduce(createReducer(args), initialState.template);
-    
+    const { template, on } = strings.reduce(createReducer(args), initialState);
+    const elementTemplate = template.trim() != "" ? template : undefined
     return {
         type: "element",
-        template: h(tagName, {on}, template)
+        template: elementTemplate ? h(tagName, {on}, template) : undefined
     };
 };
 

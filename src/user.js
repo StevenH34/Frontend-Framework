@@ -6,7 +6,7 @@ const initialState = { firstName: "John", lastName: "Doe" };
 
 // state mutating actions
 const methods = {
-    changeName: (state, firstName) => ({ ...state, firstName})
+    changeName: (state, firstName) => ({ ...state, firstName })
 };
 
 // Component template
