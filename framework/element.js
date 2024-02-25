@@ -1,16 +1,33 @@
 import { h } from "snabbdom";
 
-const createElement = tagName => (strings, ...args) => ({ 
-    type: "element", 
-    template: h( 
-        tagName,
-        {},
-        strings.reduce(
-            (acc, currentString, index) => acc + currentString + (args[index] || ""),
-            ""
-        )
-    )
-});
+// Extract init value w/ a template key
+const initialState = {
+    template: "",
+    on: {}
+};
+
+// Move reducer outside of createElement
+const createReducer = args => (acc, currentString, index) => {
+    const currentArg = args[index];
+
+    // Define the behavior of an event node
+    if (currentArg && currentArg.type === "event") {
+        return {...acc, on: { click: currentArg.click }};
+    }
+    return {
+        ...acc,
+        template: acc.template + currentString + (args[index] || "")
+    };
+};
+
+const createElement = tagName => (strings, ...args) => { 
+    const { template, on } = strings.reduce(createReducer(args), initialState.template);
+    
+    return {
+        type: "element",
+        template: h(tagName, {on}, template)
+    };
+};
 
 export const div = createElement("div");
 export const p = createElement("p");
